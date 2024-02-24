@@ -1,0 +1,13 @@
+.header-top-icon svg {
+    font-size: 22px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+p {
+    margin: 0;
+}
+
+.shadow-md {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
