@@ -1,72 +1,82 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { GoChecklist } from "react-icons/go";
-import { IoIosNotificationsOutline } from "react-icons/io";
-import { IoSettingsOutline } from "react-icons/io5";
+import { IoIosNotificationsOutline, IoSettingsOutline, IoSearchOutline } from "react-icons/io";
 import { SlBulb } from "react-icons/sl";
 import { FiMinus } from "react-icons/fi";
 import { MdContentCopy } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
-import { IoSearchOutline } from "react-icons/io5";
-
-
-
+import { BsThreeDots } from "react-icons/bs";
+import "./CSS/HeaderTop.css"; 
 
 const HeaderTop = () => {
-    const headerStyle = {
-        backgroundColor: "#0F6CBD",
-        padding: ".7rem",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        position: 'fixed',
-        top: "0",
-        width: "100%"
-    };
+    const [isMobile, setIsMobile] = useState(false);
+    const [showDropdown, setShowDropdown] = useState(false);
 
-    const inputStyle = {
-        position: "relative",
-    };
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768); 
+        };
 
-    const searchIconStyle = {
-        position: "absolute",
-        top: "50%",
-        left: "10px",
-        transform: "translateY(-50%)",
+        handleResize();
+        window.addEventListener("resize", handleResize);
+
+        // Cleanup event listener
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
+    const toggleDropdown = () => {
+        setShowDropdown(!showDropdown);
     };
-    const searchBarStyle = {
-        paddingLeft: '40px'
-    }
 
     return (
-        <header style={headerStyle}>
-            {/* Left Section - Outlook Text */}
-            <div className="col-2 d-flex align-items-center">
-                <span className="ms-3 h5 text-light">Outlook</span>
+        <header className="header-top">
+            <div className="outlook-text">
+                <span className="text-light">Outlook</span>
             </div>
-
-            {/* Center Section - Search Bar */}
-            <div className="col-2" style={inputStyle}>
-                <div style={searchIconStyle}>
-                    <IoSearchOutline />
+            <div className="search-bar">
+                <div className="search-icon">
+                    <IoSearchOutline className="text-light" />
                 </div>
-                <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Search"
-                    onChange={(e) => console.log(e.target.value)}
-                    style={searchBarStyle}
-                />
+                {!isMobile && (
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Search"
+                        onChange={(e) => console.log(e.target.value)}
+                    />
+                )}
             </div>
-
-            {/* Right Section - User Name and Icon */}
-            <div className="col-8 d-flex justify-content-end align-items-center header-top-icon">
-                <a href="/#" className="text-light"><GoChecklist /></a>
-                <a href="/#" className="text-light ms-4"><IoIosNotificationsOutline /></a>
-                <a href="/#" className="text-light ms-4"><IoSettingsOutline /></a>
-                <a href="/#" className="text-light ms-4"><SlBulb /></a>
-                <a href="/#" className="text-light ms-4"><FiMinus /></a>
-                <a href="/#" className="text-light ms-4"><MdContentCopy /></a>
-                <a href="/#" className="text-light ms-4"><RxCross2 /></a>
+            <div className="user-actions">
+                {isMobile ? (
+                    <>
+                        <div className="dropdown" onClick={toggleDropdown}>
+                            <button className="dropdown-toggle" aria-haspopup="true" aria-expanded={showDropdown ? "true" : "false"}>
+                                <BsThreeDots className="text-light" />
+                            </button>
+                            <div className={`dropdown-menu ${showDropdown ? 'show' : ''}`}>
+                                <a href="/#" className="dropdown-item"><GoChecklist /> <span className="ms-2">Go Checklist</span></a>
+                                <a href="/#" className="dropdown-item"><IoIosNotificationsOutline /> <span className="ms-2">Notifications</span></a>
+                                <a href="/#" className="dropdown-item"><IoSettingsOutline /> <span className="ms-2">Settings</span></a>
+                                <a href="/#" className="dropdown-item"><SlBulb /> <span className="ms-2">Bulb</span></a>
+                            </div>
+                        </div>
+                        <button className="user-action-btn"><FiMinus /></button>
+                        <button className="user-action-btn"><MdContentCopy /></button>
+                        <button className="user-action-btn"><RxCross2 /></button>
+                    </>
+                ) : (
+                    <>
+                        <button className="user-action-btn"><GoChecklist /></button>
+                        <button className="user-action-btn"><IoIosNotificationsOutline /></button>
+                        <button className="user-action-btn"><IoSettingsOutline /></button>
+                        <button className="user-action-btn"><SlBulb /></button>
+                        <button className="user-action-btn"><FiMinus /></button>
+                        <button className="user-action-btn"><MdContentCopy /></button>
+                        <button className="user-action-btn"><RxCross2 /></button>
+                    </>
+                )}
             </div>
         </header>
     );

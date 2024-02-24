@@ -1,0 +1,44 @@
+.header-top {
+    background-color: #0F6CBD;
+    padding: .7rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.outlook-text {
+    flex: 2;
+    /* Adjust as needed */
+}
+
+.search-bar {
+    flex: 4;
+    /* Adjust as needed */
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+}
+
+.user-actions {
+    flex: 6;
+    /* Adjust as needed */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.user-action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    /* Adjust as needed */
+}

@@ -14,10 +14,13 @@ const EmailDropdown = ({ onCategoryChange }) => {
   };
 
   const handleItemClick = (item) => {
-    // Handle the click for each item (e.g., navigate to a different section)
     console.log(`Clicked: ${item}`);
-    onCategoryChange(item); // Notify the parent component about the selected category
+    onCategoryChange(item);
   };
+
+  const truncateText = (text, maxLength) => {
+    return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
+};
 
   return (
     <div className="email-dropdown">
@@ -30,7 +33,7 @@ const EmailDropdown = ({ onCategoryChange }) => {
         onClick={toggleDropdown}
         style={{ textDecoration: 'none', fontSize: '18px' }}
       >
-        <FaChevronDown /> <b>magfurrume@gmail.com </b>
+        <FaChevronDown /> {truncateText(`magfurrume@gmail.com`, 15) }
       </button>
       {isDropdownOpen && (
         <ul className="dropdownMenuButton" aria-labelledby="dropdownMenuButton">

@@ -51,6 +51,7 @@ const itemData = [
     }
 ];
 
+
 export default function FixedSidebar() {
     return (
         <div className="d-flex flex-column align-items-center bg-light " style={{ minWidth: "50px", maxWidth: "50px", height: "100%" }}>
