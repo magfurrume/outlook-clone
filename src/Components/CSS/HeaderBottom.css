@@ -1,0 +1,73 @@
+.header-bottom {
+    padding: 0 .7rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+.nav-link {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+    /* Adjust as needed */
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.calendar-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+    /* Adjust as needed */
+}
+.event-title{
+    font-size: 14px;
+}
+.event-time {
+    margin: 0;
+    font-size: 12px;
+}
+
+.dropdown-menu.show .nav-link {
+    margin-left: 10px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}
+
+.nav-link.active {
+    border-bottom: 2px solid #0F6CBD;
+}
+
+@media (max-width: 768px) {
+    .event-info {
+        /* display: block; */
+        /* Display on larger screens */
+    }
+
+    .event-title {
+        margin: 0;
+    }
+
+    .event-time {
+        margin: 0;
+        font-size: 12px;
+    }
+}

@@ -1,38 +1,74 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import { IoCalendarOutline } from "react-icons/io5";
 import { IoIosMenu } from "react-icons/io";
-;
+import { FaChevronDown } from "react-icons/fa6";
+import "./CSS/HeaderBottom.css"; // Import CSS file for styles
 
 export default function HeaderBottom({ toggleSidebar }) {
 
-    const headerBottomStyle = {
-        padding: "0 .7rem",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        width: "100%",
-        color: 'black'
+    const [isMobile, setIsMobile] = useState(false);
+    const [showDropdown, setShowDropdown] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        handleResize();
+        window.addEventListener("resize", handleResize);
+
+        // Cleanup event listener
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
+    const toggleDropdown = () => {
+        setShowDropdown(!showDropdown);
     };
 
-
     return (
-        <header style={headerBottomStyle}>
+        <header className="header-bottom">
             {/* Left Section - Outlook Text */}
-            <div className="col-2 d-flex align-items-center">
-                <a className="navbar-brand" href="#" onClick={toggleSidebar}><IoIosMenu /></a>
-                <a className="nav-link" href="#">Home</a>
-                <a className="nav-link" href="#">Home</a>
-                <a className="nav-link" href="#">Home</a>
-                <a className="nav-link" href="#">Home</a>
-            </div>
-            <div className="col-8 d-flex justify-content-end align-items-center header-top-icon">
-                <a href="/#"><IoCalendarOutline /></a>
-                <div style={{ paddingLeft: '10px' }}>
-                    <p className='m-0'>ACCNLDP Internal - 11:30 AM</p>
-                    <p className='m-0' style={{ fontSize: '14px' }}>Tomorrow 10:30 AM</p>
-                </div>
+            <div className="header-left">
 
+
+                <div className="user-actions">
+                    <span className="navbar-brand" href="#" onClick={toggleSidebar}><IoIosMenu /></span>
+                    {isMobile ? (
+                        <> <nav className="nav-links">
+                            <button className="nav-link active">Home</button>
+                            <div className="dropdown" onClick={toggleDropdown}>
+                                <span aria-haspopup="true" aria-expanded={showDropdown ? "true" : "false"}>
+                                    <FaChevronDown className="text-dark" />
+                                </span>
+
+                                <div className={`dropdown-menu ${showDropdown ? 'show' : ''}`}>
+                                    <button className="nav-link">View</button>
+                                    <button className="nav-link">Help</button>
+                                </div>
+                            </div>
+                        </nav>
+                        </>
+                    ) : (
+                        <>
+                            <nav className="nav-links">
+                                <button className="nav-link active">Home</button>
+                                <button className="nav-link">View</button>
+                                <button className="nav-link">Help</button>
+                            </nav>
+                        </>
+                    )}
+
+                </div>
+            </div>
+            <div className="header-right">
+                <button className="calendar-button"><IoCalendarOutline /></button>
+                <div className="event-info">
+                    <p className='event-title'>ACCNLDP Internal</p>
+                    <p className='event-time'>Tomorrow 10:30 AM</p>
+                </div>
             </div>
         </header>
-    )
+    );
 }
