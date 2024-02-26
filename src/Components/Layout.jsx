@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import HeaderTop from './HeaderTop';
 import SidebarFixed from './SidebarFixed';
@@ -13,6 +13,7 @@ export default function Layout() {
     const [selectedCategory, setSelectedCategory] = useState("Inbox");
     const [isSidebarVisible, setSidebarVisible] = useState(true);
     const [selectedEmail, setSelectedEmail] = useState(null);
+    const [isEmailBodyVisible, setEmailBodyVisible] = useState(true);
 
 
     const toggleSidebar = () => {
@@ -52,6 +53,27 @@ export default function Layout() {
         setSelectedEmail(email);
     };
 
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth < 768) {
+                setSidebarVisible(!isSidebarVisible);
+                setEmailBodyVisible(false)
+            } else {
+                setSidebarVisible(isSidebarVisible);
+                setEmailBodyVisible(true)
+            }
+
+        };
+
+        handleResize();
+        window.addEventListener("resize", handleResize);
+
+        // Cleanup event listener
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, [selectedEmail]);
+
     return (
         <>
             <HeaderTop />
@@ -64,13 +86,13 @@ export default function Layout() {
                     <NavBar selectedEmail={selectedEmail} />
 
                     <div className=' row email-section'>
-                        <div className={`sidebar col-2 ${isSidebarVisible ? '' : 'd-none'}`}>
+                        <div className={`sidebar col-3 ${isSidebarVisible ? '' : 'd-none'}`}>
                             {isSidebarVisible && <Sidebar onCategoryChange={handleCategoryChange} />}
                         </div>
-                        <div className='col-3'>
+                        <div className='col-4'>
                             <Inbox title={selectedCategory} emails={getCategoryEmails(selectedCategory)} onEmailClick={handleEmailClick} />
                         </div>
-                        <div className={`sidebar ${isSidebarVisible ? 'col-7' : 'col-9'}`}>
+                        <div className={`sidebar ${isEmailBodyVisible ? '' : 'd-none'} ${isSidebarVisible ? 'col-5' : 'col-8'}`}>
                             <EmailBody selectedEmail={selectedEmail} />
                         </div>
                     </div>

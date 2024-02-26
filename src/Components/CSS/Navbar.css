@@ -1,0 +1,19 @@
+.btn-left {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    background-color: #0F6CBD;
+    margin-right: 2px;
+}
+
+.btn-right {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: #0F6CBD;
+}
+
+.btn:active {
+    border-color: #fff !important;
+}
+.btn:disabled{
+    border: none;
+}

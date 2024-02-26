@@ -1,4 +1,4 @@
-// EmailDropdown.js
+
 import React, { useState } from "react";
 import { MdOutlineInbox } from "react-icons/md";
 import { GoPaperAirplane } from "react-icons/go";
@@ -20,7 +20,7 @@ const EmailDropdown = ({ onCategoryChange }) => {
 
   const truncateText = (text, maxLength) => {
     return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
-};
+  };
 
   return (
     <div className="email-dropdown">
@@ -31,9 +31,9 @@ const EmailDropdown = ({ onCategoryChange }) => {
         data-bs-toggle="dropdown"
         aria-expanded={isDropdownOpen}
         onClick={toggleDropdown}
-        style={{ textDecoration: 'none', fontSize: '18px' }}
+        style={{ textDecoration: 'none', fontSize: '16px' }}
       >
-        <FaChevronDown /> {truncateText(`magfurrume@gmail.com`, 15) }
+        <FaChevronDown /> Favorites
       </button>
       {isDropdownOpen && (
         <ul className="dropdownMenuButton" aria-labelledby="dropdownMenuButton">

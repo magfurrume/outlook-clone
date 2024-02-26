@@ -1,0 +1,79 @@
+.email-body-area .round-box,
+.round-box {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+}
+
+.profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ddd;
+    /* Placeholder for profile image */
+    margin-right: 10px;
+}
+
+.sender-info {
+    flex-grow: 1;
+}
+
+.sender {
+    font-weight: bold;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.border {
+    border-right: 1px solid #ddd;
+    margin: 10px 0;
+}
+
+.item-right {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-end; */
+    align-items: flex-end;
+}
+
+.datetime {
+    color: #777;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.email-body {
+    line-height: 1.6;
+    padding-top: 20px;
+}
+
+.bottom-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.replay {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
