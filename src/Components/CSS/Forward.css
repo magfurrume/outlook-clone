@@ -1,0 +1,11 @@
+.border-none {
+    border: none;
+    outline: none; /* Remove the outline on focus */
+}
+
+.border-none:focus,
+.border-none:active,
+.border-none:focus-visible {
+    border: none;
+    outline: none;
+}

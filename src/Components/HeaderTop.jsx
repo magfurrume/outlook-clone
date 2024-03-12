@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { GoChecklist } from "react-icons/go";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { IoSettingsOutline } from "react-icons/io5";
@@ -13,6 +13,8 @@ import "./CSS/HeaderTop.css";
 const HeaderTop = () => {
     const [isMobile, setIsMobile] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
+    const [isSearchBarOpen, setSearchBarOpen] = useState(false);
+    const dropdownRef = useRef(null);
 
     useEffect(() => {
         const handleResize = () => {
@@ -28,9 +30,29 @@ const HeaderTop = () => {
         };
     }, []);
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setShowDropdown(false);
+            }
+        };
+
+        document.body.addEventListener("click", handleClickOutside);
+
+        // Cleanup event listener
+        return () => {
+            document.body.removeEventListener("click", handleClickOutside);
+        };
+    }, []);
+
     const toggleDropdown = () => {
         setShowDropdown(!showDropdown);
     };
+    const toggleSearchBar = () => {
+        if (isMobile) {
+            setSearchBarOpen(true);
+        }
+    }
 
     return (
         <header className="header-top">
@@ -38,24 +60,25 @@ const HeaderTop = () => {
                 <span className="text-light">Outlook</span>
             </div>
             <div className="search-bar">
-                <div className="search-icon">
-                    <IoSearchOutline className="text-dark" />
+                <div className="search-icon" onClick={toggleSearchBar}>
+
+                    <IoSearchOutline className={`${isMobile ? 'text-light' : 'text-dark'}`} />
                 </div>
-                {!isMobile && (
-                    <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Search"
-                        onChange={(e) => console.log(e.target.value)}
-                        style={{ paddingLeft: '40px' }}
-                    />
-                )}
+
+                <input
+                    type="text"
+                    className={`form-control ${isMobile ? (isSearchBarOpen ? 'searchbaropen d-inline' : 'd-none') : (!isSearchBarOpen ? 'd-inline' : '')}`}
+                    placeholder="Search"
+                    onChange={(e) => console.log(e.target.value)}
+                    style={{ paddingLeft: '40px' }}
+                />
+
             </div>
             <div className="user-actions">
                 {isMobile ? (
                     <>
-                        <div className="dropdown" onClick={toggleDropdown}>
-                            <span  aria-haspopup="true" aria-expanded={showDropdown ? "true" : "false"}>
+                        <div className="dropdown" onClick={toggleDropdown} ref={dropdownRef}>
+                            <span aria-haspopup="true" aria-expanded={showDropdown ? "true" : "false"}>
                                 <BsThreeDots className="text-light" />
                             </span>
                             <div className={`dropdown-menu ${showDropdown ? 'show' : ''}`}>

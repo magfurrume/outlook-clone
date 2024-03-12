@@ -1,0 +1,16 @@
+.cross_button {
+    display: none;
+}
+
+.cross_button{
+    border: 1px solid ;
+    padding: 0px 5px;
+    border-radius: 5px;
+    font-size: 20px;
+}
+@media (max-width: 768px) {
+    .cross_button {
+        display: inline;
+    }
+
+}

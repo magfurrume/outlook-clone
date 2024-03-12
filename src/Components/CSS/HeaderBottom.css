@@ -21,8 +21,9 @@
     background: none;
     border: none;
     cursor: pointer;
-    margin-right: 10px;
-    /* Adjust as needed */
+    margin-right: 5px;
+    padding: 0 5px;
+
 }
 
 .header-right {
@@ -37,9 +38,11 @@
     margin-right: 10px;
     /* Adjust as needed */
 }
-.event-title{
+
+.event-title {
     font-size: 14px;
 }
+
 .event-time {
     margin: 0;
     font-size: 12px;
@@ -52,15 +55,27 @@
     text-align: left;
 }
 
+.user-actions .dropdown {
+    z-index: 1;
+}
+
 .nav-link.active {
     border-bottom: 2px solid #0F6CBD;
+
+
+}
+
+.nav-link.active:hover {
+    border-bottom: 3px solid #0F6CBD;
+
+}
+
+.nav-link:hover {
+    background-color: #F8F9FA;
+
 }
 
 @media (max-width: 768px) {
-    .event-info {
-        /* display: block; */
-        /* Display on larger screens */
-    }
 
     .event-title {
         margin: 0;

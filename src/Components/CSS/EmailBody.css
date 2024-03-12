@@ -1,0 +1,131 @@
+.email-body-area .round-box,
+.round-box {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+}
+
+.profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ddd;
+    /* Placeholder for profile image */
+    margin-right: 10px;
+}
+
+.sender-info {
+    flex-grow: 1;
+}
+
+.sender {
+    font-weight: bold;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.border {
+    border-right: 1px solid #ddd;
+    margin: 10px 0;
+}
+
+.item-right {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-end; */
+    align-items: flex-end;
+}
+
+.datetime {
+    color: #777;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.email-body {
+    line-height: 1.6;
+    padding-top: 20px;
+}
+
+.bottom-buttons {
+    display: flex;
+    margin-top: 20px;
+}
+
+.replay {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cross_button {
+    display: none;
+}
+
+
+.cross_button {
+    border: 1px solid;
+    padding: 0px 5px;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.cross_button:hover {
+    background-color: #F8F9FA;
+}
+
+.bottom-buttons {
+    column-gap: 10px;
+}
+
+.bottom-buttons button {
+    background: none;
+    color: black;
+    border: 1px solid rgb(222, 226, 230);
+    padding: 10px 13px !important;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 0;
+}
+
+.bottom-buttons button:hover {
+    background: #EBF3FC;
+    border: 1px solid rgb(222, 226, 230);
+}
+
+
+.item-right .icons svg:hover {
+    background: #EBF3FC;
+    padding: 2px;
+}
+
+@media (max-width: 768px) {
+    .cross_button {
+        display: inline;
+        cursor: pointer;
+    }
+
+    .bottom-buttons {
+        justify-content: space-between;
+    }
+
+}

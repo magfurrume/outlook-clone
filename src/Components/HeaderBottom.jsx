@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { IoCalendarOutline } from "react-icons/io5";
 import { IoIosMenu } from "react-icons/io";
 import { FaChevronDown } from "react-icons/fa6";
 import "./CSS/HeaderBottom.css"; // Import CSS file for styles
 
 export default function HeaderBottom({ toggleSidebar }) {
-
     const [isMobile, setIsMobile] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
+
+    const dropdownRef = useRef(null);
 
     useEffect(() => {
         const handleResize = () => {
@@ -23,6 +24,21 @@ export default function HeaderBottom({ toggleSidebar }) {
         };
     }, []);
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setShowDropdown(false);
+            }
+        };
+
+        document.body.addEventListener("click", handleClickOutside);
+
+        // Cleanup event listener
+        return () => {
+            document.body.removeEventListener("click", handleClickOutside);
+        };
+    }, []);
+
     const toggleDropdown = () => {
         setShowDropdown(!showDropdown);
     };
@@ -31,24 +47,23 @@ export default function HeaderBottom({ toggleSidebar }) {
         <header className="header-bottom">
             {/* Left Section - Outlook Text */}
             <div className="header-left">
-
-
                 <div className="user-actions">
-                    <span className="navbar-brand" href="#" onClick={toggleSidebar}><IoIosMenu /></span>
+                <span className="navbar-brand nav-link" href="#" onClick={(event) => toggleSidebar(event)} style={{ cursor: 'pointer' }}><IoIosMenu /></span>
                     {isMobile ? (
-                        <> <nav className="nav-links">
-                            <button className="nav-link active">Home</button>
-                            <div className="dropdown" onClick={toggleDropdown}>
-                                <span aria-haspopup="true" aria-expanded={showDropdown ? "true" : "false"}>
-                                    <FaChevronDown className="text-dark" />
-                                </span>
+                        <>
+                            <nav className="nav-links">
+                                <button className="nav-link active">Home</button>
+                                <div className="dropdown" onClick={toggleDropdown} ref={dropdownRef} >
+                                    <span className="nav-link" aria-haspopup="true" aria-expanded={showDropdown ? "true" : "false"}>
+                                        <FaChevronDown className="text-dark" />
+                                    </span>
 
-                                <div className={`dropdown-menu ${showDropdown ? 'show' : ''}`}>
-                                    <button className="nav-link">View</button>
-                                    <button className="nav-link">Help</button>
+                                    <div className={`dropdown-menu ${showDropdown ? 'show' : ''}`}>
+                                        <button className="nav-link">View</button>
+                                        <button className="nav-link">Help</button>
+                                    </div>
                                 </div>
-                            </div>
-                        </nav>
+                            </nav>
                         </>
                     ) : (
                         <>
@@ -59,7 +74,6 @@ export default function HeaderBottom({ toggleSidebar }) {
                             </nav>
                         </>
                     )}
-
                 </div>
             </div>
             <div className="header-right">

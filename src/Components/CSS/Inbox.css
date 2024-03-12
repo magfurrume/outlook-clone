@@ -1,0 +1,15 @@
+.inbox-componet {
+    height: calc(100vh - 12.89rem);
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .inbox-componet {
+        height: calc(100vh - 17rem);
+    }
+}
+.inbox_item_area:hover{
+    background: #F5F5F5;
+}

@@ -3,6 +3,9 @@
     border-bottom-right-radius: 0;
     background-color: #0F6CBD;
     margin-right: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .btn-right {
@@ -17,3 +20,11 @@
 .btn:disabled{
     border: none;
 }
+.mobile .icon-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .mobile .plus-icon {
+    margin-bottom: 8px; /* Adjust the margin as needed */
+  }
