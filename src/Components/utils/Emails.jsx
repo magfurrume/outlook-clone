@@ -1,7 +1,7 @@
 export const inboxEmails = [
     {
         id: 1,
-        sender: 'john.doe@gmail.com',
+        sender: 'john@gmail.com',
         to: 'You',
         datetime: 'Sun 3/5/2024 10:15 AM',
         subject: 'Meeting Invitation',
@@ -11,7 +11,7 @@ export const inboxEmails = [
     },
     {
         id: 2,
-        sender: 'alice.smith@gmail.com',
+        sender: 'smith@gmail.com',
         to: 'You',
         datetime: 'Sun 3/5/2024 11:45 AM',
         subject: 'Product Updates',
@@ -21,7 +21,7 @@ export const inboxEmails = [
     },
     {
         id: 3,
-        sender: 'emma.jones@gmail.com',
+        sender: 'emma@gmail.com',
         to: 'You',
         datetime: 'Mon 3/6/2024 9:30 AM',
         subject: 'Important Announcement',
@@ -31,7 +31,7 @@ export const inboxEmails = [
     },
     {
         id: 4,
-        sender: 'david.williams@gmail.com',
+        sender: 'david@gmail.com',
         to: 'You',
         datetime: 'Mon 3/6/2024 11:00 AM',
         subject: 'Weekly Newsletter',
@@ -45,7 +45,7 @@ export const sentEmails = [
     {
         id: 1,
         sender: 'you@gmail.com',
-        to: 'john.doe@gmail.com',
+        to: 'john@gmail.com',
         datetime: 'Sun 3/5/2024 2:30 PM',
         subject: 'Re: Meeting Invitation',
         body: 'Sure, I will be available for the meeting. Looking forward to it!',
@@ -55,7 +55,7 @@ export const sentEmails = [
     {
         id: 2,
         sender: 'you@gmail.com',
-        to: 'alice.smith@gmail.com',
+        to: 'smith@gmail.com',
         datetime: 'Sun 3/5/2024 3:15 PM',
         subject: 'Re: Product Updates',
         body: 'Thank you for the updates. I appreciate the information.',
@@ -65,7 +65,7 @@ export const sentEmails = [
     {
         id: 3,
         sender: 'you@gmail.com',
-        to: 'emma.jones@gmail.com',
+        to: 'jones@gmail.com',
         datetime: 'Mon 3/6/2024 2:45 PM',
         subject: 'Re: Important Announcement',
         body: 'Thank you for the information. I have logged in and reviewed the details.',
@@ -75,7 +75,7 @@ export const sentEmails = [
     {
         id: 4,
         sender: 'you@gmail.com',
-        to: 'david.williams@gmail.com',
+        to: 'david@gmail.com',
         datetime: 'Mon 3/6/2024 3:30 PM',
         subject: 'Re: Weekly Newsletter',
         body: 'I appreciate the updates. Looking forward to more exciting news!',
@@ -87,7 +87,7 @@ export const sentEmails = [
 export const junkEmails = [
     {
         id: 3,
-        sender: 'special.offer@gmail.com',
+        sender: 'offer@gmail.com',
         to: 'You',
         datetime: 'Sun 3/5/2024 1:15 PM',
         subject: 'Exclusive Deal Inside!',
@@ -97,7 +97,7 @@ export const junkEmails = [
     },
     {
         id: 4,
-        sender: 'urgent.alert@gmail.com',
+        sender: 'alert@gmail.com',
         to: 'You',
         datetime: 'Sun 3/5/2024 2:45 PM',
         subject: 'URGENT: Security Alert!',
